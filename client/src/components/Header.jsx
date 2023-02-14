@@ -26,54 +26,44 @@ function Heading({ boughtBooks, dollarSympol, basket, ...props }) {
 
   return (
     <header>
-      <div>
-        <h1 className="title">Book Store</h1>
-        <div className="dropdown">
-          <button className="dropbtn">{dollarSympol}{basket}</button>
-          <div className="dropdown-content">
-            {
-              boughtBooks.map((book, index) => {
-                return (
-                  <div key={book._id}>
-                    <p className="bcount">{book.count} </p>
-                    <p className="bName"> {book.name}  </p>
-                    <p className="bPrice">${book.price}</p>
-                    <button value="delete" className="btnMenu" name={book.name} onClick={onRemove}>Delete</button>
-                    <hr />
-                  </div>
-                );
-              }
-              )
+      <h1 className="title">Book Store</h1>
+      <div className="dropdown">
+        <button className="dropbtn">{dollarSympol}{basket}</button>
+        <div className="dropdown-content">
+          {
+            boughtBooks.map((book, index) => {
+              return (
+                <div key={book._id}>
+                  <p className="bcount">{book.count} </p>
+                  <p className="bName"> {book.name}  </p>
+                  <p className="bPrice">${book.price}</p>
+                  <button value="delete" className="btnMenu" name={book.name} onClick={onRemove}>Delete</button>
+                  <hr />
+                </div>
+              );
             }
+            )
+          }
 
-            {boughtBooks.length > 0 ?
+          {boughtBooks.length > 0 ?
 
-              boughtBooks.length === 1 && boughtBooks[0].count === 1 ?
+            boughtBooks.length === 1 && boughtBooks[0].count === 1 ?
 
+              <div className="divTotal" >
+                <hr className="LineTotal" />
+                <p className="priceTotal">Total ${basket}</p>
+                <button name="buyOne" type="submit" onClick={() => sendBooks()} value="one" className="btnTotal" >Buy</button>
+
+              </div>
+
+              : boughtBooks.length > 1 || boughtBooks[0].count >= 1 ?
                 <div className="divTotal" >
                   <hr className="LineTotal" />
                   <p className="priceTotal">Total ${basket}</p>
-                  {/* <form className="formOne" action="/data" method="post"> */}
-                  <button name="buyOne" type="submit" onClick={() => sendBooks()} value="one" className="btnTotal" >Buy</button>
-                  {/* <button name="buyOne" type="submit" value={boughtBooks} className="btnTotal" >Buy</button> */}
-
-                  {/* </form> */}
+                  <button name="buyAll" type="submit" onClick={() => sendBooks()} value="all" className="btnTotal">Buy All</button>
                 </div>
-
-                : boughtBooks.length > 1 || boughtBooks[0].count >= 1 ?
-                  <div className="divTotal" >
-                    <hr className="LineTotal" />
-                    <p className="priceTotal">Total ${basket}</p>
-                    {/* <form className="formTotal" action="/data" method="post"> */}
-                    <button name="buyAll" type="submit" onClick={() => sendBooks()} value="all" className="btnTotal">Buy All</button>
-                    {/* <button name="buyAll" type="submit" value="All" className="btnTotal">Buy All</button> */}
-
-                    {/* </form> */}
-                  </div>
-                  : null
-              : null}
-
-          </div>
+                : null
+            : null}
         </div>
       </div>
     </header>

@@ -16,7 +16,7 @@ function BuyForm(props) {
     console.log(bought);
 
     return (
-        <div>
+        <>
             {
                 bought.map((book, index) => {
                     return (
@@ -40,11 +40,7 @@ function BuyForm(props) {
                 <input type="text" placeholder="Enter your IBAN" name="iban" required />
                 <button className="btnLogin">Submit</button>
             </div>
-            {/* </form> */}
-            {/* <form action="/bookStore">
-                <button className="btnGuest" type="submit">Continue as Guest</button>
-            </form> */}
-        </div>
+        </>
     );
 }
 

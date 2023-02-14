@@ -17,7 +17,7 @@ function Store({ books, handleClick, ...props }) {
     // console.log(adminValue)
 
     return (
-        <div>
+        <>
             {(((books.length !== 0) && (adminValue === false)) ? (books.map((book, index) => {
                 return (
                     <Item
@@ -32,7 +32,7 @@ function Store({ books, handleClick, ...props }) {
                 );
             }))
                 : (
-                    <div>
+                    <>
                         {(books.map((book, index) => {
                             return (
                                 <Item
@@ -47,10 +47,10 @@ function Store({ books, handleClick, ...props }) {
                             );
                         }))}
                         <AddItem />
-                    </div>
+                    </>
                 )
             )}
-        </div>
+        </>
     );
 }
 

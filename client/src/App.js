@@ -53,7 +53,6 @@ export default function App() {
             let indexOfBoghtBooks = findID(boughtBooks, id);
             if (indexOfBoghtBooks != null) {
                 boughtBooks[indexOfBoghtBooks].count += 1;
-                // console.log(" IF");
 
             } else {
                 setBoughtBooks([...boughtBooks, {
@@ -62,13 +61,8 @@ export default function App() {
                     _id: books[id]._id,
                     count: 1
                 }]);
-                // console.log(" Else");
             }
         }
-        // if (books[id].count === 0) {
-        //     event.target.parentElement.classList.add("sold");
-        //     console.log( event.target.parentElement.classList);
-        // }
     }
 
 
@@ -78,11 +72,6 @@ export default function App() {
         if (index !== null) {
             setBasket(basket - boughtBooks[index].price);
             let orginalIndex = findName(books, bName);
-            // if (books[findID(books, orginalIndex)].count === 0) {
-            //     document.getElementById(orginalIndex).classList.remove("sold");
-
-            //     console.log("Remove Sold");
-            // }
             books[findID(books, orginalIndex)].count += 1;
             if (boughtBooks[index].count > 1) {
                 boughtBooks[index].count -= 1;
@@ -97,53 +86,45 @@ export default function App() {
         }
     }
 
-// console.log(boughtBooks);
-    // function clickPost(event) {
-    //    BuyForm();
-    // }
-
     return (
         <Router>
-                <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/about" element={<About />} />
-                    <Route path="/buy" element={<Buy />} />
-                    <Route path="/bookStore" element={<BookStore />} />
-                </Routes>
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/buy" element={<Buy />} />
+                <Route path="/bookStore" element={<BookStore />} />
+            </Routes>
         </Router>
     );
 
     function Home() {
         return (
-            <div>
+            <>
                 <Heading boughtBooks={boughtBooks} />
                 <LoginForm />
                 <Footer />
-            </div>
+            </>
         )
     }
 
 
-
     function BookStore() {
         return (
-            <div>
+            <>
                 <Heading
                     boughtBooks={boughtBooks}
                     onRemove={handleRemove}
                     basket={basket}
                     dollarSympol="$"
-                    // clickPost={clickPost}
                 />
 
                 <Store
                     handleClick={handleClick}
                     books={books}
-                // adminValue={adminValue}
                 />
 
                 <Footer />
-            </div>
+            </>
         )
     }
 
@@ -153,11 +134,9 @@ export default function App() {
 
     function Buy() {
         return (
-            <div>
-
-            <BuyForm />
-
-            </div>
+            <>
+                <BuyForm />
+            </>
         )
     }
 
