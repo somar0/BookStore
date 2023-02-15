@@ -2,7 +2,7 @@ import React from "react";
 
 
 
-function LoginForm(props) {
+const LoginForm = () => {
 
     return (
         <form action="/" method="post" >

@@ -2,11 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 
-function Heading({ boughtBooks, dollarSympol, basket, ...props }) {
-  function onRemove(id) {
-    props.onRemove(id);
-  }
-
+const Heading = ({ boughtBooks, dollarSympol, basket, onRemove, ...props }) => {
 
   const navigate = useNavigate();
 

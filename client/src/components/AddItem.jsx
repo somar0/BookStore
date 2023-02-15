@@ -1,6 +1,6 @@
 import { React } from "react";
 
-function AddItem(props) {
+const AddItem = () => {
 
     return (
         <div id="PutID" className="itemName">

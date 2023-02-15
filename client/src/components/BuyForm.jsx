@@ -2,7 +2,7 @@ import { React, useState, useEffect } from "react";
 
 
 
-function BuyForm(props) {
+const BuyForm = () => {
 
     const [bought, setBought] = useState([]);
 
@@ -18,7 +18,7 @@ function BuyForm(props) {
     return (
         <>
             {
-                bought.map((book, index) => {
+                bought.map((book) => {
                     return (
                         <div key={book._id}>
                             <p className="boughtBooks">{book.count} {book.name} ${book.price} </p>

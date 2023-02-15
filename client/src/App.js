@@ -11,7 +11,7 @@ import LoginForm from "./components/LoginForm.jsx";
 import Store from "./components/Store.jsx";
 import BuyForm from "./components/BuyForm.jsx";
 
-export default function App() {
+const App = () => {
     const [backendData, setBackendData] = useState([{}]);
 
     useEffect(() => {
@@ -29,7 +29,7 @@ export default function App() {
 
     const [basket, setBasket] = useState(0);
 
-    function handleClick(id) {
+    const handleClick = (id) => {
         const choosenBook = books.find((element) => element._id === id);
         if (choosenBook.count >= 1) {
             choosenBook.count -= 1;
@@ -50,9 +50,8 @@ export default function App() {
     }
 
 
-    function handleRemove(id) {
+    const handleRemove = (id) => {
         const deletedBook = boughtBooks.find((element) => element._id === id)
-        console.log(deletedBook);
         if (deletedBook !== undefined) {
             setBasket(basket - deletedBook.price);
             books.find((element) => element._id === id).count += 1;
@@ -125,3 +124,5 @@ export default function App() {
     }
 
 }
+
+export default App;

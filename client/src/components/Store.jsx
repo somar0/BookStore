@@ -2,7 +2,7 @@ import { React, useState, useEffect } from "react";
 import Item from "./Item.jsx";
 import AddItem from "./AddItem.jsx";
 
-function Store({ books, handleClick, ...props }) {
+const Store = ({ books, handleClick, ...props }) => {
 
     const [admin, setAdmin] = useState();
 

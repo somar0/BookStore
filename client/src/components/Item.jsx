@@ -1,7 +1,8 @@
 import { React } from "react";
 
-function Item({ id, imageSrc, bookName, bookPrice, bookQuantity, ...params }) {
-    function handleClick() {
+const Item = ({ id, imageSrc, bookName, bookPrice, bookQuantity, ...params }) => {
+
+    const handleClick = () => {
         params.handleClick(id);
     }
 
@@ -20,7 +21,7 @@ function Item({ id, imageSrc, bookName, bookPrice, bookQuantity, ...params }) {
             <p name="bookQuantity" className="bookQuantity">
                 {bookQuantity}
             </p>
-            <button onClick={handleClick} className="btn">
+            <button onClick={() => handleClick()} className="btn">
                 Add to Cart
             </button>
         </div>
