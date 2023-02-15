@@ -24,41 +24,25 @@ export default function App() {
     const books = backendData;
 
 
+
     const [boughtBooks, setBoughtBooks] = useState([]);
 
     const [basket, setBasket] = useState(0);
 
-    function findID(arr, id) {
-        for (let i = 0; i < arr.length; i++) {
-            if (arr[i]._id === id) {
-                return i;
-            }
-        }
-        return null;
-    }
-
-    function findName(arr, name) {
-        for (let i = 0; i < arr.length; i++) {
-            if (arr[i].name === name) {
-                return i;
-            }
-        }
-        return null;
-    }
-
-    function handleClick(id, event) {
-        if (books[id].count >= 1) {
-            books[id].count -= 1;
-            setBasket(basket + books[id].price);
-            let indexOfBoghtBooks = findID(boughtBooks, id);
-            if (indexOfBoghtBooks != null) {
-                boughtBooks[indexOfBoghtBooks].count += 1;
+    function handleClick(id) {
+        const choosenBook = books.find((element) => element._id === id);
+        if (choosenBook.count >= 1) {
+            choosenBook.count -= 1;
+            setBasket(basket + choosenBook.price);
+            let addedBook = boughtBooks.find((element) => element._id === id);
+            if (addedBook !== undefined) {
+                addedBook.count += 1;
 
             } else {
                 setBoughtBooks([...boughtBooks, {
-                    name: books[id].name,
-                    price: books[id].price,
-                    _id: books[id]._id,
+                    name: choosenBook.name,
+                    price: choosenBook.price,
+                    _id: choosenBook._id,
                     count: 1
                 }]);
             }
@@ -66,20 +50,20 @@ export default function App() {
     }
 
 
-    function handleRemove(event) {
-        let bName = event.target.name;
-        let index = findName(boughtBooks, bName);
-        if (index !== null) {
-            setBasket(basket - boughtBooks[index].price);
-            let orginalIndex = findName(books, bName);
-            books[findID(books, orginalIndex)].count += 1;
-            if (boughtBooks[index].count > 1) {
-                boughtBooks[index].count -= 1;
+    function handleRemove(id) {
+        const deletedBook = boughtBooks.find((element) => element._id === id)
+        console.log(deletedBook);
+        if (deletedBook !== undefined) {
+            setBasket(basket - deletedBook.price);
+            books.find((element) => element._id === id).count += 1;
+
+            if (deletedBook.count > 1) {
+                deletedBook.count -= 1;
             }
             else {
                 setBoughtBooks((prev) => {
                     return prev.filter((boughtBook) => {
-                        return boughtBook.name !== bName;
+                        return boughtBook._id !== id;
                     });
                 });
             }

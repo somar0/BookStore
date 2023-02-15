@@ -1,8 +1,8 @@
 import { React } from "react";
 
-function Item({id, imageSrc, bookName, bookPrice, bookQuantity, ...params}) {
-    function handleClick(event) {
-        params.handleClick(id, event);
+function Item({ id, imageSrc, bookName, bookPrice, bookQuantity, ...params }) {
+    function handleClick() {
+        params.handleClick(id);
     }
 
     const bookStyle = bookQuantity === 0 ? "itemDiv sold" : "itemDiv";

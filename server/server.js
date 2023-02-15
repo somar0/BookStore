@@ -14,7 +14,7 @@ mongoose.connect("mongodb://127.0.0.1:27017/BooksDB", { useNewUrlParser: true })
 
 let admin = false;
 const userName = "admin";
-const passowrd = "admin";
+const password = "admin";
 
 let index = 0;
 
@@ -128,7 +128,7 @@ const book11 = new Book({
 
 const book12 = new Book({
   "_id": index++,
-  "name": "Beautifull World, Where Are You",
+  "name": "Beautiful World, Where Are You",
   "imgSrc": "/images/image12",
   "price": 32,
   "count": 12
@@ -191,7 +191,7 @@ app.get("/avatar", function (req, res) {
 app.post("/", function (req, res) {
   const uname = req.body.uname;
   const psw = req.body.psw;
-  if ((uname === userName) && (psw === passowrd)) {
+  if ((uname === userName) && (psw === password)) {
     admin = true;
   } else {
     admin = false;

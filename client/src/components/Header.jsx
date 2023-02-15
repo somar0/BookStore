@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom";
 
 
 function Heading({ boughtBooks, dollarSympol, basket, ...props }) {
-  function onRemove(event) {
-    props.onRemove(event);
+  function onRemove(id) {
+    props.onRemove(id);
   }
 
 
@@ -37,7 +37,7 @@ function Heading({ boughtBooks, dollarSympol, basket, ...props }) {
                   <p className="bcount">{book.count} </p>
                   <p className="bName"> {book.name}  </p>
                   <p className="bPrice">${book.price}</p>
-                  <button value="delete" className="btnMenu" name={book.name} onClick={onRemove}>Delete</button>
+                  <button value="delete" className="btnMenu" name={book.name} onClick={() => onRemove(book._id)}>Delete</button>
                   <hr />
                 </div>
               );
