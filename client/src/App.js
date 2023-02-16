@@ -5,36 +5,34 @@ import {
     Route
 } from "react-router-dom";
 
-import Heading from "./components/Header.jsx";
-import Footer from "./components/Footer.jsx";
+// import Header from "./components/Layout/Header.jsx";
+// import Footer from "./components/Layout/Footer.jsx";
 import LoginForm from "./components/LoginForm.jsx";
 import Store from "./components/Store.jsx";
 import BuyForm from "./components/BuyForm.jsx";
+import Layout from "./components/Layout/Layout.jsx";
 
 const App = () => {
-    const [backendData, setBackendData] = useState([{}]);
+    const [books, setBooks] = useState([{}]);
+
+    const [boughtBooks, setBoughtBooks] = useState([]);
+
+    const [basket, setBasket] = useState(0);
 
     useEffect(() => {
         fetch("/api")
             .then((response) => response.json())
             .then((data) => {
-                setBackendData(data);
+                setBooks(data);
             });
     }, []);
-    const books = backendData;
-
-
-
-    const [boughtBooks, setBoughtBooks] = useState([]);
-
-    const [basket, setBasket] = useState(0);
 
     const handleClick = (id) => {
         const choosenBook = books.find((element) => element._id === id);
         if (choosenBook.count >= 1) {
             choosenBook.count -= 1;
             setBasket(basket + choosenBook.price);
-            let addedBook = boughtBooks.find((element) => element._id === id);
+            const addedBook = boughtBooks.find((element) => element._id === id);
             if (addedBook !== undefined) {
                 addedBook.count += 1;
 
@@ -83,9 +81,12 @@ const App = () => {
     function Home() {
         return (
             <>
-                <Heading boughtBooks={boughtBooks} />
-                <LoginForm />
-                <Footer />
+                <Layout
+                    boughtBooks={boughtBooks}
+                    dollarSympol=""
+                    children={<LoginForm />}
+                />
+
             </>
         )
     }
@@ -94,19 +95,17 @@ const App = () => {
     function BookStore() {
         return (
             <>
-                <Heading
+                <Layout
                     boughtBooks={boughtBooks}
                     onRemove={handleRemove}
                     basket={basket}
-                    dollarSympol="$"
-                />
+                    dollarSympol="$">
 
-                <Store
-                    handleClick={handleClick}
-                    books={books}
-                />
+                    <Store
+                        handleClick={handleClick}
+                        books={books} />
 
-                <Footer />
+                </Layout>
             </>
         )
     }
@@ -118,7 +117,14 @@ const App = () => {
     function Buy() {
         return (
             <>
-                <BuyForm />
+                <Layout
+                    boughtBooks={boughtBooks}
+                    onRemove={handleRemove}
+                    dollarSympol="$"
+                    basket={basket}
+                >
+                    <BuyForm />
+                </Layout>
             </>
         )
     }

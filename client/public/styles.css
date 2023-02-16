@@ -34,7 +34,7 @@ header {
 
 footer {
   position: relative;
-  text-align:center;
+  text-align: center;
   /* width: 100%; */
   color: black;
   position: absolute;
@@ -64,10 +64,11 @@ footer {
    */
 .BookCoverImg {
   width: 200px;
-  height:300px;
+  height: 300px;
 }
 
-.itemDiv,.itemName {
+.itemDiv,
+.itemName {
   width: 200px;
   display: inline-block;
   margin: 6% 3% 3% 3%;
@@ -243,8 +244,8 @@ button:hover {
 
 /* Dropdown Content (Hidden by Default) */
 .dropdown-content {
-  display: block;
-  /*none*/
+  display: none;
+  /*none / block */
   position: relative;
   background-color: #D3756B;
   width: 600px;
@@ -264,10 +265,6 @@ button:hover {
   font-size: 25px;
 }
 
-
-
-
-
 /* Change color of dropdown links on hover */
 .dropdown-content a:hover {
   background-color: #ddd;
@@ -286,7 +283,8 @@ button:hover {
   padding: 5px 10px;
 }
 
-.bookName,.imageUrl  {
+.bookName,
+.imageUrl {
   text-align: center;
   /* color: black; */
   border-width: 3px;
@@ -302,24 +300,24 @@ button:hover {
 
 input[type=text],
 input[type=password],
-input[type=email]
- {
+input[type=email] {
   background-color: #D3756B;
   width: 60%;
   padding: 14px 20px;
   margin: 8px auto 0 auto;
   display: inline-block;
-  border: solid ;
+  border: solid;
   box-sizing: border-box;
   display: block;
 }
 
-::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: black;
 }
 
-label{
-  text-align:inherit;
+label {
+  text-align: inherit;
   display: block;
   margin: 0 auto 0 20%;
 
@@ -364,7 +362,8 @@ img.avatar {
 /* /////********************************************************** */
 
 
-.boughtBooks,.basket{
+.boughtBooks,
+.basket {
   /* width: 70px; */
   /* height: 25x; */
   /* border-radius: 5px; */
@@ -376,4 +375,8 @@ img.avatar {
   display: relative;
   text-align: center;
   /* margin-left: 40%; */
+}
+
+.buyForm {
+  padding: 120px;
 }

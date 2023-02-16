@@ -7,7 +7,7 @@ const LoginForm = () => {
     return (
         <form action="/" method="post" >
             <div className="imgcontainer">
-                <img src="avatar" alt="Avatar" className="avatar" />
+                <img src="./../avatar.jpg" alt="Avatar" className="avatar" />
             </div>
             <div className="container">
                 <label ><b>Username</b></label>

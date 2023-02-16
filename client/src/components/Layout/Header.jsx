@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 
-const Heading = ({ boughtBooks, dollarSympol, basket, onRemove, ...props }) => {
+const Header = ({ boughtBooks, dollarSympol, basket, onRemove, ...props }) => {
 
   const navigate = useNavigate();
 
@@ -15,9 +15,7 @@ const Heading = ({ boughtBooks, dollarSympol, basket, onRemove, ...props }) => {
       },
       body: JSON.stringify(boughtBooks)
     })
-    console.log("Hi");
     navigate("/buy");
-
   };
 
   return (
@@ -27,7 +25,7 @@ const Heading = ({ boughtBooks, dollarSympol, basket, onRemove, ...props }) => {
         <button className="dropbtn">{dollarSympol}{basket}</button>
         <div className="dropdown-content">
           {
-            boughtBooks.map((book, index) => {
+            boughtBooks.map((book) => {
               return (
                 <div key={book._id}>
                   <p className="bcount">{book.count} </p>
@@ -49,7 +47,6 @@ const Heading = ({ boughtBooks, dollarSympol, basket, onRemove, ...props }) => {
                 <hr className="LineTotal" />
                 <p className="priceTotal">Total ${basket}</p>
                 <button name="buyOne" type="submit" onClick={() => sendBooks()} value="one" className="btnTotal" >Buy</button>
-
               </div>
 
               : boughtBooks.length > 1 || boughtBooks[0].count >= 1 ?
@@ -66,4 +63,4 @@ const Heading = ({ boughtBooks, dollarSympol, basket, onRemove, ...props }) => {
   );
 }
 
-export default Heading;
+export default Header;
