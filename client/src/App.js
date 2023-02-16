@@ -11,6 +11,7 @@ import LoginForm from "./components/LoginForm.jsx";
 import Store from "./components/Store.jsx";
 import BuyForm from "./components/BuyForm.jsx";
 import Layout from "./components/Layout/Layout.jsx";
+// import DropMenu from "./components/DropMenu.jsx";
 
 const App = () => {
     const [books, setBooks] = useState([{}]);
@@ -81,12 +82,9 @@ const App = () => {
     function Home() {
         return (
             <>
-                <Layout
-                    boughtBooks={boughtBooks}
-                    dollarSympol=""
-                    children={<LoginForm />}
-                />
-
+                <Layout>
+                    <LoginForm />
+                </Layout>
             </>
         )
     }
@@ -96,11 +94,16 @@ const App = () => {
         return (
             <>
                 <Layout
-                    boughtBooks={boughtBooks}
-                    onRemove={handleRemove}
-                    basket={basket}
-                    dollarSympol="$">
-
+                boughtBooks={boughtBooks}
+                onRemove={handleRemove}
+                basket={basket}
+                dollarSympol="$"
+                >
+                    {/* <DropMenu
+                        boughtBooks={boughtBooks}
+                        onRemove={handleRemove}
+                        basket={basket}
+                        dollarSympol="$"/> */}
                     <Store
                         handleClick={handleClick}
                         books={books} />
@@ -117,12 +120,15 @@ const App = () => {
     function Buy() {
         return (
             <>
-                <Layout
-                    boughtBooks={boughtBooks}
-                    onRemove={handleRemove}
-                    dollarSympol="$"
-                    basket={basket}
-                >
+                <Layout boughtBooks={boughtBooks}
+                        onRemove={handleRemove}
+                        basket={basket}
+                        dollarSympol="$">
+                    {/* <DropMenu
+                        boughtBooks={boughtBooks}
+                        onRemove={handleRemove}
+                        basket={basket}
+                        dollarSympol="$" s /> */}
                     <BuyForm />
                 </Layout>
             </>

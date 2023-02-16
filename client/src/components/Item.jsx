@@ -8,7 +8,6 @@ const Item = ({ id, imageSrc, bookName, bookPrice, bookQuantity, ...params }) =>
 
     const bookStyle = bookQuantity === 0 ? "itemDiv sold" : "itemDiv";
 
-
     return (
         <div id={id} className={bookStyle}>
             <img className="BookCoverImg " src={imageSrc} alt={bookName} />

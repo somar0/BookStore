@@ -21,6 +21,7 @@ const Header = ({ boughtBooks, dollarSympol, basket, onRemove, ...props }) => {
   return (
     <header>
       <h1 className="title">Book Store</h1>
+      {/* /////////////////////////////////////////////////////////////////  */}
       <div className="dropdown">
         <button className="dropbtn">{dollarSympol}{basket}</button>
         <div className="dropdown-content">
@@ -35,30 +36,17 @@ const Header = ({ boughtBooks, dollarSympol, basket, onRemove, ...props }) => {
                   <hr />
                 </div>
               );
-            }
-            )
-          }
+            })}
 
-          {boughtBooks.length > 0 ?
-
-            boughtBooks.length === 1 && boughtBooks[0].count === 1 ?
-
-              <div className="divTotal" >
-                <hr className="LineTotal" />
-                <p className="priceTotal">Total ${basket}</p>
-                <button name="buyOne" type="submit" onClick={() => sendBooks()} value="one" className="btnTotal" >Buy</button>
-              </div>
-
-              : boughtBooks.length > 1 || boughtBooks[0].count >= 1 ?
-                <div className="divTotal" >
-                  <hr className="LineTotal" />
-                  <p className="priceTotal">Total ${basket}</p>
-                  <button name="buyAll" type="submit" onClick={() => sendBooks()} value="all" className="btnTotal">Buy All</button>
-                </div>
-                : null
-            : null}
+          <div className="divTotal" >
+            <hr className="LineTotal" />
+            <p className="priceTotal">Total ${basket}</p>
+            <button name="buyOne" type="submit" onClick={() => sendBooks()} value="one" className="btnTotal" >Buy</button>
+          </div>
         </div>
       </div>
+      {/* /////////////////////////////////////////////////////////////////  */}
+
     </header>
   );
 }
