@@ -9,14 +9,14 @@ html {
 }
 
 body {
-  background: #A75D5D;
+  background: #F0F0F0;
   padding: 0;
 }
 
 header {
   position: fixed;
   width: 100%;
-  background-color: #D3756B;
+  background-color: #D3D3D3;
   margin: auto;
   height: 75px;
   padding: 16px 32px;
@@ -26,42 +26,24 @@ header {
 .title {
   display: inline;
   text-align: left;
-  color: #FFC3A1;
+  color: #0E2A52;
   font-family: "McLaren", cursive;
   font-weight: 200;
   float: left;
 }
 
 footer {
-  position: relative;
   text-align: center;
-  /* width: 100%; */
-  color: black;
-  position: absolute;
+  background-color: #BEBEBE;
+  color: #000000;
   width: 100%;
+  position: fixed;
+  left: 0px;
+  bottom: 0px;
+  height: 30px;
 
 }
 
-/* .note {
-    background: #fff;
-    border-radius: 7px;
-    box-shadow: 0 2px 5px #ccc;
-    padding: 10px;
-    width: 240px;
-    margin: 16px;
-    float: left;
-  } */
-/* .note h1 {
-    font-size: 1.1em;
-    margin-bottom: 6px;
-  } */
-/* .note {
-    font-size: 1.1em;
-    margin-bottom: 10px;
-    white-space: pre-wrap;
-    word-wrap: break-word;
-  }
-   */
 .BookCoverImg {
   width: 200px;
   height: 300px;
@@ -71,7 +53,7 @@ footer {
 .itemName {
   width: 200px;
   display: inline-block;
-  margin: 6% 3% 3% 3%;
+  margin: 80px 3% 3% 3%;
   align-items: center;
 }
 
@@ -81,6 +63,8 @@ footer {
   border: solid;
   border-radius: 10px;
   border-color: black;
+  color: #404040;
+  background-color: #D3D3D3;
   border-width: 3px;
   width: 98px;
   display: inline-block;
@@ -95,6 +79,8 @@ footer {
   border: solid;
   border-radius: 10px;
   border-color: black;
+  color: #404040;
+  background-color: #D3D3D3;
   border-width: 3px;
   box-sizing: border-box;
   width: 98px;
@@ -109,7 +95,8 @@ footer {
   width: 200px;
   height: 35px;
   border-radius: 5px;
-  background-color: #D3756B;
+  color: #404040;
+  background-color: #808080;
   font-size: 20px;
   font-weight: 400;
 }
@@ -143,8 +130,8 @@ footer {
   height: 25x;
   border-radius: 5px;
   border: none;
-  background-color: #D3756B;
-  color: #FFC3A1;
+  background-color: #808080;
+  color: #404040;
   font-size: 20px;
   font-weight: 400;
   display: inline-table;
@@ -156,7 +143,7 @@ footer {
 
 
 hr {
-  border: 2px solid #FFC3A1;
+  border: 1px solid #000000;
 }
 
 
@@ -171,8 +158,8 @@ hr {
   height: 25x;
   border-radius: 5px;
   border-color: black;
-  background-color: #D3756B;
-  color: #FFC3A1;
+  background-color: #808080;
+  color: #404040;
   font-size: 20px;
   font-weight: 400;
   display: inline-table;
@@ -183,50 +170,32 @@ hr {
 }
 
 
-/* .bDelete {
-  border: none;
-  width: 20px;
-  position: relative;
-  height: 35px;
-  border-radius: 5px;
-  background-color: #D3756B;
-  color: #FFC3A1;
-  font-size: 20px;
-  font-weight: 400;
-  text-align: right;
-  margin-right: 0px;
-} */
-
 .sold {
   filter: grayscale(1);
   background-color: #be9d9d;
   opacity: 0.1;
   /* border: 15px solid black; */
+  pointer-events: none;
+
 
 }
 
 button:hover {
   border: 1px solid #FFC3A1;
-  background-color: #D3756B;
+  background-color: #D3D3D3;
   color: #ffffff;
   padding: 1px 1px;
   cursor: pointer;
 }
 
-/* .disabled {
-  border: 1px solid black;
-  background-color: #be9d9d;
-} */
-
-
 
 /* Dropdown Button */
 .dropbtn {
-  background-color: #D3756B;
+  background-color: #D3D3D3;
   padding: 10px;
   font-size: 25px;
   border: none;
-  color: #FFC3A1;
+  color: #FFFFFF;
   font-family: "McLaren", cursive;
   font-weight: 200;
   text-align: right;
@@ -247,7 +216,7 @@ button:hover {
   display: none;
   /*none / block */
   position: relative;
-  background-color: #D3756B;
+  background-color: #808080;
   width: 600px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   overflow: auto;
@@ -257,7 +226,7 @@ button:hover {
 }
 
 .dropdown-content p {
-  color: #FFC3A1;
+  color: #D3D3D3;
   font-family: "McLaren", cursive;
   padding-left: 10px;
   text-decoration: none;
@@ -278,16 +247,23 @@ button:hover {
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {
   border: 1px solid #FFC3A1;
-  background-color: #D3756B;
-  color: #ffffff;
+  background-color: #D3D3D3;
+  color: #FFFFFF;
   padding: 5px 10px;
 }
 
-.bookName,
 .imageUrl {
-  text-align: center;
-  /* color: black; */
   border-width: 3px;
+  width: 200px;
+  font-family: "McLaren", cursive;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.bookName {
+  text-align: center;
+  vertical-align: auto;
+  height: 60px;
   width: 200px;
   font-family: "McLaren", cursive;
   font-weight: 600;
@@ -301,12 +277,13 @@ button:hover {
 input[type=text],
 input[type=password],
 input[type=email] {
-  background-color: #D3756B;
+  background-color: #FFFFFF;
   width: 60%;
+  color: #333333;
   padding: 14px 20px;
   margin: 8px auto 0 auto;
   display: inline-block;
-  border: solid;
+  border: solid #808080;
   box-sizing: border-box;
   display: block;
 }
@@ -320,17 +297,18 @@ label {
   text-align: inherit;
   display: block;
   margin: 0 auto 0 20%;
+  color: #808080;
 
 }
 
 .btnGuest,
 .btnLogin {
-  background-color: #D3756B;
-  color: black;
+  background-color: #808080;
+  color: #404040;
   padding: 14px 20px;
   margin: 8px auto 0 auto;
   border-radius: 5px;
-  border: sold;
+  border: Solid #808080;
   font-size: 20px;
   font-weight: 400;
   height: 50px;
@@ -364,17 +342,12 @@ img.avatar {
 
 .boughtBooks,
 .basket {
-  /* width: 70px; */
-  /* height: 25x; */
-  /* border-radius: 5px; */
-  /* border: sold; */
-  /* background-color: #D3756B; */
+
   color: black;
   font-size: 40px;
   font-weight: 400;
   display: relative;
   text-align: center;
-  /* margin-left: 40%; */
 }
 
 .buyForm {
