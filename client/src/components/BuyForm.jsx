@@ -2,18 +2,11 @@ import { React, useState, useEffect } from "react";
 
 
 
-const BuyForm = (basket, ...props) => {
+const BuyForm = (props) => {
 
-    const [bought, setBought] = useState([]);
 
-    useEffect(() => {
-        fetch("/bought")
-            .then((response) => response.json())
-            .then((data) => {
-                setBought(data);
-            });
-    }, []);
 
+    
     return (
         <>
             <div className="buyForm">
@@ -25,7 +18,7 @@ const BuyForm = (basket, ...props) => {
                 <input type="email" placeholder="Enter your Email" name="email" required />
                 <label ><b>IBAN</b></label>
                 <input type="text" placeholder="Don't Enter your real IBAN" name="iban" required />
-                <button className="btnLogin">Submit</button>
+                <button className="btnLogin" type="submit">Submit</button>
             </div>
         </>
     );

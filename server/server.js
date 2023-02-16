@@ -153,29 +153,26 @@ const Book = mongoose.model("Book", booksSchema);
 //   "count": 14
 // });
 
-
-
 // const defaultBooks = [book1, book2, book3, book4, book5, book6, book7, book8, book9, book10, book11, book12, book13, book14];
 
 app.get("/api", function (req, res) {
 
   Book.find({}, function (err, foundBooks) {
     if (foundBooks.length === 0) {
-      // Book.insertMany(defaultBooks, function (err) {
-      //   if (err) {
-      //     console.log(err);
-      //   }
-      //   else {
-      //     console.log("Successfully saved default Books to DB.");
-      //   }
-      // });
+      Book.insertMany(defaultBooks, function (err) {
+        if (err) {
+          console.log(err);
+        }
+        else {
+          console.log("Successfully saved default Books to DB.");
+        }
+      });
       res.status(201).redirect("/api");
     } else {
       res.status(201).send(foundBooks);
     }
   });
 });
-
 
 app.get("/images/:name", function (req, res) {
   const source = "/images/" + req.params.name + ".jpg";
@@ -193,14 +190,9 @@ app.post("/", function (req, res) {
   res.status(201).redirect("/bookStore")
 });
 
-
-
 app.get("/info", function (req, res) {
   res.status(201).send(admin);
 });
-
-
-
 
 app.post("/addedItem", function (req, res) {
 

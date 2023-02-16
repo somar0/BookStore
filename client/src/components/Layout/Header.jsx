@@ -41,7 +41,7 @@ const Header = ({ boughtBooks, dollarSympol, basket, onRemove, ...props }) => {
           <div className="divTotal" >
             <hr className="LineTotal" />
             <p className="priceTotal">Total ${basket}</p>
-            <button name="buyOne" type="submit" onClick={() => sendBooks()} value="one" className="btnTotal" >Buy</button>
+            <button name="buyOne"  onClick={() => sendBooks()} value="one" className="btnTotal" >Buy</button>
           </div>
         </div>
       </div>

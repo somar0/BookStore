@@ -72,7 +72,6 @@ const App = () => {
         <Router>
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/about" element={<About />} />
                 <Route path="/buy" element={<Buy />} />
                 <Route path="/bookStore" element={<BookStore />} />
             </Routes>
@@ -82,7 +81,9 @@ const App = () => {
     function Home() {
         return (
             <>
-                <Layout>
+                <Layout
+                    boughtBooks={boughtBooks}
+                    dollarSympol="">
                     <LoginForm />
                 </Layout>
             </>
@@ -94,10 +95,10 @@ const App = () => {
         return (
             <>
                 <Layout
-                boughtBooks={boughtBooks}
-                onRemove={handleRemove}
-                basket={basket}
-                dollarSympol="$"
+                    boughtBooks={boughtBooks}
+                    onRemove={handleRemove}
+                    basket={basket}
+                    dollarSympol="$"
                 >
                     {/* <DropMenu
                         boughtBooks={boughtBooks}
@@ -113,17 +114,13 @@ const App = () => {
         )
     }
 
-    function About() {
-        return <h2>About</h2>;
-    }
-
     function Buy() {
         return (
             <>
                 <Layout boughtBooks={boughtBooks}
-                        onRemove={handleRemove}
-                        basket={basket}
-                        dollarSympol="$">
+                    onRemove={handleRemove}
+                    basket={basket}
+                    dollarSympol="$">
                     {/* <DropMenu
                         boughtBooks={boughtBooks}
                         onRemove={handleRemove}
