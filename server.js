@@ -171,6 +171,10 @@ app.post("/api/admin", function (req, res) {
   res.status(201).redirect("/bookStore");
 });
 
+app.get("/", function (req, res) {
+  res.status(201).send("Hallo");
+});
+
 app.get("/api/admin", function (req, res) {
   res.status(201).send(isAdminLoggedIn);
 });
