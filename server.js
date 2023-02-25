@@ -220,5 +220,5 @@ app.post("/api/deleteBook", async function (req, res) {
 });
 
 app.listen(process.env.PORT || 5000, function () {
-  console.log(`The Server is running on Port ${port}!`);
+  console.log(`The Server is running on Port 5000!`);
 });
