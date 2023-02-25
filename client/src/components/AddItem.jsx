@@ -4,7 +4,7 @@ const AddItem = () => {
 
     return (
         <div id="PutID" className="itemName">
-            <form action="/addedItem" method="post" >
+            <form action="/api/addItem" method="post" >
                 <img className="BookCoverImg" src="./../avatar.jpg" alt="put src" />
                 <input name="imageUrl" className="imageUrl" placeholder="ImageUrl" />
                 <input name="bookName" className="bookName" placeholder="BookName" />

@@ -1,57 +1,26 @@
-import { React, useState, useEffect } from "react";
-import Item from "./Item.jsx";
+import React from "react";
 import AddItem from "./AddItem.jsx";
+import BookList from "./BookList.jsx";
 
-const Store = ({ books, handleClick, ...props }) => {
+const Store = ({ books, handleClick, admin, ...props }) => {
 
-    const [admin, setAdmin] = useState();
-
-    useEffect(() => {
-        fetch("/info")
-            .then((response) => response.json())
-            .then((data) => {
-                setAdmin(data);
-            });
-    }, []);
-    const adminValue = admin;
-    // console.log(adminValue)
+    
 
     return (
         <>
-            {(((books.length !== 0) && (adminValue === false)) ? (books.map((book, index) => {
-                return (
-                    <Item
-                        id={book._id}
-                        key={index}
-                        bookName={book.name}
-                        imageSrc={book.imgSrc}
-                        bookPrice={book.price}
-                        bookQuantity={book.count}
+            {admin === false ? (
+                <BookList books={books} admin={admin} handleClick={handleClick} />
+            ) : (
+                <>
+                    <BookList books={books}
+                        admin={admin}
                         handleClick={handleClick}
                     />
-                );
-            }))
-                : (
-                    <>
-                        {(books.map((book, index) => {
-                            return (
-                                <Item
-                                    id={book._id}
-                                    key={index}
-                                    bookName={book.name}
-                                    imageSrc={book.imgSrc}
-                                    bookPrice={book.price}
-                                    bookQuantity={book.count}
-                                    handleClick={handleClick}
-                                />
-                            );
-                        }))}
-                        <AddItem />
-                    </>
-                )
+                    <AddItem />
+                </>
             )}
         </>
     );
-}
+};
 
 export default Store;

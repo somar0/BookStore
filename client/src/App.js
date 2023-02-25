@@ -1,137 +1,108 @@
-import { React, useState, useEffect } from "react";
-import {
-    BrowserRouter as Router,
-    Routes,
-    Route
-} from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import LoginForm from "./components/LoginForm";
+import Layout from "./Layout/Layout";
+import Store from "./components/Store";
+import BuyForm from "./components/BuyForm";
+import { fetchBooks } from "./api/book-api";
 
-// import Header from "./components/Layout/Header.jsx";
-// import Footer from "./components/Layout/Footer.jsx";
-import LoginForm from "./components/LoginForm.jsx";
-import Store from "./components/Store.jsx";
-import BuyForm from "./components/BuyForm.jsx";
-import Layout from "./components/Layout/Layout.jsx";
-// import DropMenu from "./components/DropMenu.jsx";
-
-const App = () => {
-    const [books, setBooks] = useState([{}]);
-
+function App() {
+    const [books, setBooks] = useState([]);
     const [boughtBooks, setBoughtBooks] = useState([]);
-
     const [basket, setBasket] = useState(0);
+    const [admin, setAdmin] = useState(false);
 
     useEffect(() => {
-        fetch("/api")
+        fetchBooks().then((data) => {
+            setBooks(data);
+        });
+    }, []);
+
+
+    useEffect(() => {
+        fetch("/api/admin")
             .then((response) => response.json())
             .then((data) => {
-                setBooks(data);
+                setAdmin(data);
             });
     }, []);
 
-    const handleClick = (id) => {
-        const choosenBook = books.find((element) => element._id === id);
-        if (choosenBook.count >= 1) {
-            choosenBook.count -= 1;
-            setBasket(basket + choosenBook.price);
-            const addedBook = boughtBooks.find((element) => element._id === id);
+
+    const handleBookClick = (id) => {
+        const selectedBook = books.find((book) => book._id === id);
+        if (selectedBook.count >= 1) {
+            selectedBook.count -= 1;
+            setBasket(basket + selectedBook.price);
+            const addedBook = boughtBooks.find((book) => book._id === id);
             if (addedBook !== undefined) {
                 addedBook.count += 1;
-
             } else {
-                setBoughtBooks([...boughtBooks, {
-                    name: choosenBook.name,
-                    price: choosenBook.price,
-                    _id: choosenBook._id,
-                    count: 1
-                }]);
+                setBoughtBooks([
+                    ...boughtBooks,
+                    { name: selectedBook.name, price: selectedBook.price, _id: selectedBook._id, count: 1 },
+                ]);
             }
         }
-    }
+    };
 
-
-    const handleRemove = (id) => {
-        const deletedBook = boughtBooks.find((element) => element._id === id)
+    const handleRemoveBook = (id) => {
+        const deletedBook = boughtBooks.find((book) => book._id === id);
         if (deletedBook !== undefined) {
             setBasket(basket - deletedBook.price);
-            books.find((element) => element._id === id).count += 1;
-
+            books.find((book) => book._id === id).count += 1;
             if (deletedBook.count > 1) {
                 deletedBook.count -= 1;
-            }
-            else {
-                setBoughtBooks((prev) => {
-                    return prev.filter((boughtBook) => {
-                        return boughtBook._id !== id;
-                    });
-                });
+            } else {
+                setBoughtBooks((prev) => prev.filter((book) => book._id !== id));
             }
         }
-    }
+    };
 
     return (
         <Router>
             <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/buy" element={<Buy />} />
-                <Route path="/bookStore" element={<BookStore />} />
+                <Route path={"/"} element={<Home />} />
+                <Route path={"/bookstore"} element={<BookStore />} />
+                <Route path={"/buy"} element={<Buy />} />
             </Routes>
         </Router>
     );
 
     function Home() {
         return (
-            <>
-                <Layout
-                    boughtBooks={boughtBooks}
-                    dollarSympol="">
-                    <LoginForm />
-                </Layout>
-            </>
-        )
+            <Layout boughtBooks={boughtBooks}
+            >
+                <LoginForm />
+            </Layout>
+        );
     }
-
 
     function BookStore() {
         return (
-            <>
-                <Layout
-                    boughtBooks={boughtBooks}
-                    onRemove={handleRemove}
-                    basket={basket}
-                    dollarSympol="$"
-                >
-                    {/* <DropMenu
-                        boughtBooks={boughtBooks}
-                        onRemove={handleRemove}
-                        basket={basket}
-                        dollarSympol="$"/> */}
-                    <Store
-                        handleClick={handleClick}
-                        books={books} />
-
-                </Layout>
-            </>
-        )
+            <Layout
+                boughtBooks={boughtBooks}
+                onRemove={handleRemoveBook}
+                basket={basket}
+            >
+                <Store books={books}
+                    handleClick={handleBookClick}
+                    admin={admin}
+                />
+            </Layout>
+        );
     }
 
     function Buy() {
         return (
-            <>
-                <Layout boughtBooks={boughtBooks}
-                    onRemove={handleRemove}
-                    basket={basket}
-                    dollarSympol="$">
-                    {/* <DropMenu
-                        boughtBooks={boughtBooks}
-                        onRemove={handleRemove}
-                        basket={basket}
-                        dollarSympol="$" s /> */}
-                    <BuyForm />
-                </Layout>
-            </>
-        )
+            <Layout
+                boughtBooks={boughtBooks}
+                basket={basket}
+                onRemove={handleRemoveBook}
+            >
+                <BuyForm basket={basket} />
+            </Layout>
+        );
     }
-
 }
 
 export default App;

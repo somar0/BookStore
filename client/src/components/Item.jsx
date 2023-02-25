@@ -1,22 +1,26 @@
-import { React } from "react";
+import React from "react";
 
-const Item = ({ id, imageSrc, bookName, bookPrice, bookQuantity, ...params }) => {
+const Item = ({ id, imageSrc, bookName, bookPrice, bookQuantity, deleteBtn,admin, ...params }) => {
+    const bookStyle = bookQuantity === 0 ? "itemDiv sold" : "itemDiv";
 
     const handleClick = () => {
         params.handleClick(id);
     }
-
-    const bookStyle = bookQuantity === 0 ? "itemDiv sold" : "itemDiv";
-
+    
     return (
         <div id={id} className={bookStyle}>
-            <img className="BookCoverImg " src={imageSrc} alt={bookName} />
-            <p name="bookName" className="bookName">{bookName}</p>
-            <p name="bookPrice" className="bookPrice">{bookPrice}$</p>
-            <p name="bookQuantity" className="bookQuantity">{bookQuantity}</p>
-            <button onClick={() => handleClick()} className="btn">Add to Cart</button>
+            <img className="BookCoverImg" src={imageSrc} alt={bookName} />
+            <p className="bookName">{bookName}</p>
+            <p className="bookPrice">{`$${bookPrice}`}</p>
+            <p className="bookQuantity">{bookQuantity}</p>
+            <button onClick={handleClick} className="btn" disabled={bookQuantity === 0}>Add to Cart</button>
+            {admin !== false ? (
+                <form action="/api/deleteBook" method="post" >
+                    <input name="id" value={id} className="hidden" readOnly />
+                    <button type="submit" className="btn" >Delete</button>
+                </form>) : ""}
         </div>
     );
-}
+};
 
 export default Item;

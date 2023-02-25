@@ -51,10 +51,10 @@ footer {
 
 .itemDiv,
 .itemName {
-  width: 200px;
+   width: 200px;
   display: inline-block;
-  margin: 80px 3% 3% 3%;
-  align-items: center;
+   margin: 80px 3% 3% 3%;
+  align-items: center; 
 }
 
 
@@ -352,4 +352,7 @@ img.avatar {
 
 .buyForm {
   padding: 120px;
+}
+.hidden{
+  display: none;
 }
