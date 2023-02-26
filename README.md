@@ -2,11 +2,11 @@
 
 To start the project you need to write the following Commands in your Command Prompt:
 
-1. git clone https://github.com/somar0/BookStore.git
+1. navigate to the file where you want to clone the Project 
 
-2. move to the directorie BookStore
+2. git clone https://github.com/somar0/BookStore.git
 
-3. cd client
+3. cd BookStore/client
 
 4. npm install
 
