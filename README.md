@@ -17,3 +17,9 @@ To start the project you need to write the following Commands in your Command Pr
 7. npm install
 
 8. npm run dev
+
+To Login as Admin:
+Username: admin
+Password: admin
+
+any other inputs will login as a guest.
