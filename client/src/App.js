@@ -58,15 +58,7 @@ function App() {
         }
     };
 
-    return (
-        <Router>
-            <Routes>
-                <Route path={"/"} element={<Home />} />
-                <Route path={"/bookstore"} element={<BookStore />} />
-                <Route path={"/buy"} element={<Buy />} />
-            </Routes>
-        </Router>
-    );
+
 
     function Home() {
         return (
@@ -103,6 +95,16 @@ function App() {
             </Layout>
         );
     }
+
+    return (
+        <Router>
+            <Routes>
+                <Route path={"/"} element={<Home />} />
+                <Route path={"/bookstore"} element={<BookStore />} />
+                <Route path={"/buy"} element={<Buy />} />
+            </Routes>
+        </Router>
+    );
 }
 
 export default App;

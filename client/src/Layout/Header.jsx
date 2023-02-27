@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import BookItem from "./BookItem";
 import { sendBooksToServer } from "../api/utils";
@@ -7,10 +7,6 @@ const Header = ({ boughtBooks, basket, onRemove }) => {
 
 
   const navigate = useNavigate();
-
-  const totalPrice = useMemo(() => {
-    return boughtBooks.reduce((acc, book) => acc + book.price * book.count, 0);
-  }, [boughtBooks]);
 
   const handleBuy = async () => {
     await sendBooksToServer(boughtBooks);
@@ -23,22 +19,25 @@ const Header = ({ boughtBooks, basket, onRemove }) => {
   return (
     <header>
       <h1 className="title">Book Store</h1>
-      <div className="dropdown">
-        {window.location.href !== "http://localhost:3000/" ?
+
+      {window.location.href !== "http://localhost:3000/" ?
+        <div className="dropdown">
           <button className="dropbtn">${basket}</button>
-          : undefined
-        }
-        <div className="dropdown-content">
-          {boughtBooks.map((book) => (
-            <BookItem key={book._id} book={book} onRemove={onRemove} />
-          ))}
-          <div className="divTotal">
-            <hr className="lineTotal" />
-            <p className="priceTotal">Total ${totalPrice}</p>
-            <button name="buyOne" onClick={handleBuy} value="one" className="btnTotal">Buy</button>
+          <div className="dropdown-content">
+            {boughtBooks.map((book) => (
+              <BookItem key={book._id} book={book} onRemove={onRemove} />
+            ))}
+            <div className="divTotal">
+              <hr className="lineTotal" />
+              <p className="priceTotal">Total ${basket}</p>
+              <button name="buyOne" onClick={handleBuy} value="one" className="btnTotal">Buy</button>
+            </div>
           </div>
         </div>
-      </div>
+
+        : undefined
+      }
+
     </header>
   );
 };
