@@ -8,13 +8,13 @@ To start the project you need to write the following Commands in your Command Pr
 
 3. Navigate to Folder "client" 
 
-4. ### `npm start`
+4. ### `npm install`
 
 5. Navigate to Folder server
 
-7. ### `npm start`
+7. ### `npm install`
 
-8. ### `npm start`
+8. ### `npm run dev`
 
 To Login as Admin:
 Username: admin
