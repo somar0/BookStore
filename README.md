@@ -1,5 +1,7 @@
 # Online Book Store website
 
+Das BookStore-Projekt ist ein E-Commerce-Online-Shop für Bücher, der von mir als Teil meines persönlichen Projekts entwickelt wurde. Meine Rolle in diesem Projekt umfasste das Design, die Implementierung und die Wartung der Website. Ich habe HTML, CSS, JavaScript und React verwendet, um die Website zu entwickeln.
+
 
 To start the project you need to write the following Commands in your Command Prompt:
 
